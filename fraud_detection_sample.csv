@@ -1,0 +1,12 @@
+text,label
+警示：偵測到帳戶轉出 $5000。,1
+Regular transaction of $200 at Walmart.,0
+⚠️ 發現使用信用卡 5678 有異常交易。,1
+付款至海外帳戶 $1500,1
+正常交易：全聯消費 $50。,0
+Your payment to Apple of $9.99 was successful.,0
+Suspicious transfer of $5000 detected from account 1234.,1
+Regular transaction of $200 at Walmart.,0
+Fraudulent activity detected with credit card 5678.,1
+Payment of $1500 sent to offshore account.,1
+Normal transaction: purchase of groceries for $50.,0
