@@ -35,6 +35,7 @@
 ├── Fraud Detection_BERT_grado_2.py        # 第三次迭代
 ├── Fraud Detection_BERT_grado_3.py        # 第四次迭代
 ├── Fraud Detection_BERT_grado_4.py        # 第五次迭代
+├── Fraud Detection_BERT_grado_5.py        # 第六次迭代，開始分切code，準備寫成Class，方便協做
 ├── requirements.txt                       # 環境需求
 └── README.md
 ```
