@@ -29,15 +29,17 @@
 ## 🗂️ 專案結構
 ```bash
 .
-├── Fraud Detection_BERT.py                 # 初始模型轉換 (.ipynb → .py)
+├── Fraud Detection_BERT.py                 # 原文code轉換 (.ipynb → .py)
 ├── Fraud Detection_BERT_grado.py          # Gradio 第一次迭代版本
 ├── Fraud Detection_BERT_grado_1.py        # 第二次迭代
 ├── Fraud Detection_BERT_grado_2.py        # 第三次迭代
 ├── Fraud Detection_BERT_grado_3.py        # 第四次迭代
 ├── Fraud Detection_BERT_grado_4.py        # 第五次迭代
 ├── Fraud Detection_BERT_grado_5.py        # 第六次迭代，開始分切code，準備寫成Class，方便協做
-├── requirements.txt                       # 環境需求
-└── README.md
+├── README.md                              # 說明文件
+├── data_clean.py                          # 資料清洗py檔範本
+├── fraud_detection_sample.csv             # 資料集CSV檔
+└── README.md                              # 環境需求
 ```
 ---
 
