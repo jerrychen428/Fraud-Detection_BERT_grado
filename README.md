@@ -40,7 +40,7 @@
 ├── README.md                              # 說明文件
 ├── data_clean.py                          # 資料清洗py檔範本
 ├── fraud_detection_sample.csv             # 資料集CSV檔
-└── README.md                              # 環境需求
+└── requirements.txt                       # 環境需求
 ```
 ---
 
