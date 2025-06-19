@@ -3,5 +3,6 @@
 __pycache__/
 flagged/
 fraud_bert_model/
+fraud_detection_app.egg-info/
 results/
 .gitignore
