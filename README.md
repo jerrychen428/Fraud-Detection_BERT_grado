@@ -29,6 +29,7 @@
 ## 🗂️ 專案結構
 ```bash
 .
+├── .gitignore                             # 不想加入git追蹤的資料夾或檔案寫在這裏面
 ├── Fraud Detection_BERT.py                 # 原文code轉換 (.ipynb → .py)
 ├── Fraud Detection_BERT_grado.py          # Gradio 第一次迭代版本
 ├── Fraud Detection_BERT_grado_1.py        # 第二次迭代
@@ -40,7 +41,31 @@
 ├── README.md                              # 說明文件
 ├── data_clean.py                          # 資料清洗py檔範本
 ├── fraud_detection_sample.csv             # 資料集CSV檔
-└── requirements.txt                       # 環境需求
+├── requirements.txt                       # 環境需求
+└── setup.py                               # 安裝環境py檔
+```
+---
+## 🛠️ 環境建置說明
+
+本專案已整合所有必要套件與依賴，請依照以下任一方式完成環境安裝：
+### 📦 方法一：透過 setup.py 安裝（推薦）
+```
+pip install .
+```
+此方法會根據 setup.py 自動安裝所有指定版本的依賴套件，確保環境一致性。
+### 🗂 方法二：使用 requirements.txt 安裝
+```
+pip install -r requirements.txt
+```
+此檔案列出本專案所需的所有套件及其版本，適用於大多數部署情境。
+### 🧪 建議 Python 版本
+
+Python 3.10.7
+
+建議建立虛擬環境（virtual environment）：
+
+```
+pip install .                   # 安裝專案依賴
 ```
 ---
 
