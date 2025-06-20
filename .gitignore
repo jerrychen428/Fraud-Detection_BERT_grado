@@ -1,4 +1,5 @@
 .venv/
+build/
 .conda/
 __pycache__/
 flagged/
