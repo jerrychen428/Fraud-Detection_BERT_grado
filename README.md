@@ -38,6 +38,7 @@
 ├── Fraud Detection_BERT_grado_4.py        # 第五次迭代
 ├── Fraud Detection_BERT_grado_5.py        # 第六次迭代，開始分切code，準備寫成Class，方便協做
 ├── Fraud Detection_BERT_grado_6.py        # 第七次迭代，寫成class歡迎協做
+├── Fraud Detection_BERT_grado_7.py        # 第八次迭代，新增檢查模型是否已經訓練過function
 ├── README.md                              # 說明文件
 ├── data_clean.py                          # 資料清洗py檔範本
 ├── fraud_detection_sample.csv             # 資料集CSV檔
