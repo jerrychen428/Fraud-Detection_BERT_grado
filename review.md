@@ -2,7 +2,7 @@
 
 ## CI test
 
-- add 
+- add cache argument in action
 
 ## FastAPI Factory Pattern
 
@@ -16,3 +16,8 @@ uvicorn Fraud_Detection_BERT:create_app \
     --port 8000 \
     --reload    # under development env
 ```
+
+## OOP and state
+
+- Too much unnecessary encapsulation in Instance, hard to manage and limited transparency.
+-> Parameters OR instance attributes?

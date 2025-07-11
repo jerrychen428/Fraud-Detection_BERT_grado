@@ -1,7 +1,7 @@
 import torch
 import pandas as pd
 import numpy as np
-from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
+from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments, EvalPrediction
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
@@ -65,7 +65,7 @@ training_args = TrainingArguments(
 )
 
 # Define Compute Metrics
-def compute_metrics(pred):
+def compute_metrics(pred: EvalPrediction):
     labels = pred.label_ids
     preds = pred.predictions.argmax(-1)
     acc = accuracy_score(labels, preds)
