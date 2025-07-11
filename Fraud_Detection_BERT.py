@@ -88,16 +88,16 @@ trainer.train()
 model.save_pretrained("fraud_bert_model")
 tokenizer.save_pretrained("fraud_bert_model")
 
-# FastAPI Deployment
-app = FastAPI()
+def create_app():
+    """FastAPI App"""
+    app = FastAPI()
 
-@app.post("/predict")
-def predict_transaction(text: str):
-    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
-    with torch.no_grad():
-        output = model(**inputs)
-        prediction = torch.argmax(output.logits).item()
-    return {"text": text, "fraudulent": bool(prediction)}
+    @app.post("/predict")
+    def predict_transaction(text: str):
+        inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
+        with torch.no_grad():
+            output = model(**inputs)
+            prediction = torch.argmax(output.logits).item()
+        return {"text": text, "fraudulent": bool(prediction)}
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    return app
