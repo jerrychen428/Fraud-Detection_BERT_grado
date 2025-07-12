@@ -21,3 +21,14 @@ uvicorn Fraud_Detection_BERT:create_app \
 
 - Too much unnecessary encapsulation in Instance, hard to manage and limited transparency.
 -> Parameters OR instance attributes?
+
+## requirements.txt
+
+- Current `requirements.txt` is not complete.
+- `pip freeze > requirements.total.txt`
+- Dependency management with more comprehensive control: [`poetry`](https://python-poetry.org/)
+
+## pytest
+
+- Utilize [`fixture`](https://docs.pytest.org/en/6.2.x/fixture.html) for reusable resources.
+- [conftest.py](https://docs.pytest.org/en/stable/reference/fixtures.html): sharing fixtures across multiple files
