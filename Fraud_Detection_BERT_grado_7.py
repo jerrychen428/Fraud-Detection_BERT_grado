@@ -25,8 +25,8 @@ class FinancialFraudDataset(Dataset):
         return item
 
 class FinancialFraudTrainer:
-    def __init__(self, data_path="./fraud_detection_sample.csv"):
-        self.data_path = data_path
+    def __init__(self):
+        self.data_path = None
         self.train_texts = None
         self.val_texts = None
         self.train_labels = None
@@ -36,16 +36,17 @@ class FinancialFraudTrainer:
         self.val_dataset = None
         self.model = None
 
-    def prepare_dataset(self):
+    def prepare_dataset(self, file_path="./fraud_detection_sample.csv"):
         # 讀取 CSV 檔案，使用 UTF-8 編碼
+        self.data_path = file_path or self.data_path
         df = pd.read_csv(self.data_path, encoding="utf-8")
         # 分割為訓練集與驗證集
         self.train_texts, self.val_texts, self.train_labels, self.val_labels = train_test_split(
             df['text'].tolist(), df['label'].tolist(), test_size=0.2, random_state=42)
 
-    def tokenize_data(self):
+    def tokenize_data(self, pretrained="hfl/chinese-roberta-wwm-ext"):
         # 載入中文 RoBERTa tokenizer
-        self.tokenizer = BertTokenizer.from_pretrained("hfl/chinese-roberta-wwm-ext")
+        self.tokenizer = BertTokenizer.from_pretrained(pretrained)
         # 對訓練與驗證文本進行編碼
         train_encodings = self.tokenizer(self.train_texts, truncation=True, padding=True, max_length=128)
         val_encodings = self.tokenizer(self.val_texts, truncation=True, padding=True, max_length=128)
@@ -53,14 +54,14 @@ class FinancialFraudTrainer:
         self.train_dataset = FinancialFraudDataset(train_encodings, self.train_labels)
         self.val_dataset = FinancialFraudDataset(val_encodings, self.val_labels)
 
-    def load_model(self):
+    def load_model(self, pretrained="hfl/chinese-roberta-wwm-ext"):
         # 載入中文 RoBERTa 分類模型，設定分類數為 2（合法 / 詐騙）
-        self.model = BertForSequenceClassification.from_pretrained("hfl/chinese-roberta-wwm-ext", num_labels=2)
+        self.model = BertForSequenceClassification.from_pretrained(pretrained, num_labels=2)
 
-    def train_model(self):
+    def train_model(self, output_dir="./results"):
         # 設定訓練參數
         training_args = TrainingArguments(
-            output_dir="./results",                # 訓練結果儲存位置
+            output_dir=output_dir,                # 訓練結果儲存位置
             num_train_epochs=20,                    # 訓練輪數
             per_device_train_batch_size=4,          # 每批訓練數量
             per_device_eval_batch_size=4,           # 每批驗證數量
@@ -132,13 +133,17 @@ class FinancialFraudTrainer:
         print("Checking if model already trained...")
         model_path_bin = os.path.join("fraud_bert_model", "pytorch_model.bin")
         model_path_safe = os.path.join("fraud_bert_model", "model.safetensors")
-        if os.path.exists(model_path_bin) or os.path.exists(model_path_safe):
+
+        if any([
+            os.path.exists(model_path_bin),
+            os.path.exists(model_path_safe),
+        ]):
             print("✅ Model already trained.")
             return True
-        else:
-            print("❌ Model not trained yet.")
-            return False
-        
+
+        print("❌ Model not trained yet.")
+        return False
+
 if __name__ == "__main__":
     # 建立 Trainer 實例
     trainer = FinancialFraudTrainer()
